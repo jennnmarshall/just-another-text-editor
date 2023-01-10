@@ -33,13 +33,12 @@ module.exports = () => {
         fingerprints: false,
         inject: true,
         name: "Just Another Text Editor",
-        short_name: "jate",
-        description:
-          "A text editor that can be used with or without internet connectivity",
+        short_name: "JATE",
+        description: "A text editor that can be used with or without internet connectivity",
         background_color: "#225ca3",
         theme_color: "#225ca3",
-        start_url: "./",
-        publicPath: "./",
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
