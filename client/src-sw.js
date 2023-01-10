@@ -1,15 +1,15 @@
-const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
+const { warmStrategyCache } = require("workbox-recipes");
 // added StaleWhileRevalidate to check the cache first for requested information
-const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
-const { registerRoute } = require('workbox-routing');
-const { CacheableResponsePlugin } = require('workbox-cacheable-response');
-const { ExpirationPlugin } = require('workbox-expiration');
-const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
+const { CacheFirst, StaleWhileRevalidate } = require("workbox-strategies");
+const { registerRoute } = require("workbox-routing");
+const { CacheableResponsePlugin } = require("workbox-cacheable-response");
+const { ExpirationPlugin } = require("workbox-expiration");
+const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
 
 precacheAndRoute(self.__WB_MANIFEST);
 
 const pageCache = new CacheFirst({
-  cacheName: 'page-cache',
+  cacheName: "page-cache",
   plugins: [
     new CacheableResponsePlugin({
       statuses: [0, 200],
@@ -21,24 +21,24 @@ const pageCache = new CacheFirst({
 });
 
 warmStrategyCache({
-  urls: ['/index.html', '/'],
+  urls: ["/index.html", "/"],
   strategy: pageCache,
 });
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+registerRoute(({ request }) => request.mode === "navigate", pageCache);
 
 // TODO: Implement asset caching
 registerRoute(
-// this callback function checks the CSS and JS for the requests to be cached
-  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
+  // this callback function checks the CSS and JS for the requests to be cached
+  ({ request }) => ["style", "script", "worker"].includes(request.destination),
   new StaleWhileRevalidate({
-    cacheName: 'asset-cache',
+    cacheName: "asset-cache",
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
-      })
-    ]
+      }),
+    ],
   })
-)
+);
 
 registerRoute();
