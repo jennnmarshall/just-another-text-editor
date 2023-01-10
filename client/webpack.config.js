@@ -1,7 +1,7 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
-const path = require('path');
-const { InjectManifest } = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackPwaManifest = require("webpack-pwa-manifest");
+const path = require("path");
+const { InjectManifest } = require("workbox-webpack-plugin");
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 // TODO: Add CSS loaders and babel to webpack.
@@ -21,19 +21,19 @@ module.exports = () => {
       // webpack plugin generates html file and injects bundles
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "JATE",
+        title: "jate",
       }),
       // use inject manifest rather than generateSW for more control over configuration
       new InjectManifest({
         swSrc: "./src-sw.js",
         swDest: "src-sw.js",
       }),
-// create manifest file
+      // create manifest file
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
         name: "Just Another Text Editor",
-        short_name: "JATE",
+        short_name: "jate",
         description:
           "A text editor that can be used with or without internet connectivity",
         background_color: "#225ca3",

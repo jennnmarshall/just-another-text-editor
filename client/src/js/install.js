@@ -2,8 +2,6 @@ const butInstall = document.getElementById('buttonInstall');
 
 // Logic for installing the PWA
 window.addEventListener('beforeinstallprompt', (event) => {
-    // prevent prompt from displaying on mobile
-    event.preventDefault();
 // Stashes event so that it can be triggered later
     window.deferredPrompt = event;
 // unhide install button
@@ -18,7 +16,7 @@ butInstall.addEventListener('click', async () => {
     if (!promptEvent) {
         // If the deferred prompt isn't available
         return;
-    };
+    }
 // show the install prompt
     promptEvent.prompt();
 // reset deferred prompt variable to null
