@@ -1,10 +1,10 @@
 const { warmStrategyCache } = require("workbox-recipes");
-// added StaleWhileRevalidate to check the cache first for requested information
 const { CacheFirst, StaleWhileRevalidate } = require("workbox-strategies");
 const { registerRoute } = require("workbox-routing");
 const { CacheableResponsePlugin } = require("workbox-cacheable-response");
 const { ExpirationPlugin } = require("workbox-expiration");
 const { precacheAndRoute } = require("workbox-precaching/precacheAndRoute");
+// added StaleWhileRevalidate to check the cache first for requested information
 
 precacheAndRoute(self.__WB_MANIFEST);
 
