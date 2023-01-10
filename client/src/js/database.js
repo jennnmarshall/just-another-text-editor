@@ -12,7 +12,7 @@ const initdb = async () =>
     },
   });
 
-// Add logic to a method that accepts some content and adds it to the database
+// Updates content within the existing database
 export const putDb = async (content) => {
   console.log('Saved to database', result);
 
@@ -29,7 +29,7 @@ export const putDb = async (content) => {
   console.log('result.value', result.value);
 };
 
-// Add logic for a method that gets all the content from the database
+// Gets all content from the database
 export const getDb = async () => {  
   console.log("GET all from the database");
 

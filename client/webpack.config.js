@@ -18,16 +18,17 @@ module.exports = () => {
       path: path.resolve(__dirname, "dist"),
     },
     plugins: [
+      // webpack plugin generates html file and injects bundles
       new HtmlWebpackPlugin({
         template: "./index.html",
         title: "JATE",
       }),
-
+      // use inject manifest rather than generateSW for more control over configuration
       new InjectManifest({
         swSrc: "./src-sw.js",
         swDest: "src-sw.js",
       }),
-
+// create manifest file
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -50,6 +51,7 @@ module.exports = () => {
     ],
 
     module: {
+      // CSS loader
       rules: [
         {
           test: /\.css$/i,
@@ -58,6 +60,7 @@ module.exports = () => {
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
+          // babel loader translates and compiles javascript to tailor to the user's browser
           use: {
             loader: "babel-loader",
             options: {
