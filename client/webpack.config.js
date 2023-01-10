@@ -17,7 +17,6 @@ module.exports = () => {
       path: path.resolve(__dirname, "dist"),
     },
     plugins: [
-
       new HtmlWebpackPlugin({
         template: "./index.html",
         title: "JATE",
@@ -25,7 +24,7 @@ module.exports = () => {
 
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "src-sw.js",
+        swDest: "service-worker.js",
       }),
 
       new WebpackPwaManifest({
@@ -33,8 +32,7 @@ module.exports = () => {
         inject: true,
         name: "Just Another Text Editor",
         short_name: "JATE",
-        description:
-          "A text editor using IndexedDB to implement offline capability",
+        description: "A text editor.",
         background_color: "#225ca3",
         theme_color: "#225ca3",
         start_url: "./",

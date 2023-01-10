@@ -43,4 +43,5 @@ registerRoute(
   })
 );
 
-registerRoute();
+// the below is unnecessary and prevented the successful install prompt
+// registerRoute();
