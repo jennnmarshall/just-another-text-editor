@@ -21,7 +21,7 @@ module.exports = () => {
       // webpack plugin generates html file and injects bundles
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "jate",
+        title: "JATE",
       }),
       // use inject manifest rather than generateSW for more control over configuration
       new InjectManifest({
