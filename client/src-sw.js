@@ -32,8 +32,10 @@ registerRoute(
   // this callback function checks the CSS and JS for the requests to be cached
   ({ request }) => ["style", "script", "worker"].includes(request.destination),
   new StaleWhileRevalidate({
+    // name of cache storage
     cacheName: "asset-cache",
     plugins: [
+      // this plugin will cache responses with these headers to a maximum age of 30 days
       new CacheableResponsePlugin({
         statuses: [0, 200],
       }),
